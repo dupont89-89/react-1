@@ -47,4 +47,10 @@ button.btn__send__posts {
     justify-content: flex-end;
     margin-top: 40px;
     margin-right: 20px;
+    color: #f44336;
+}
+
+.like a {
+    margin-left: 10px;
+    color: #000;
 }

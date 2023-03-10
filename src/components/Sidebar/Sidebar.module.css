@@ -25,3 +25,7 @@ a.active {
     padding-left: 10px;
     transition: 0.5s;
 }
+
+.sidebar {
+    padding: 30px;
+}
