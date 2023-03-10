@@ -1,0 +1,35 @@
+.dialogs__container {
+    display: grid;
+    grid-row: 1fr;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+        "h1 h1"
+        "dialogs-item dialogs-message";
+    padding: 30px 30px 30px 10px;
+}
+
+h1 {
+    grid-area: h1;
+    font-size: 25px;
+}
+
+/* W3C standard
+   сейчас только для Firefox */
+   * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255, 255, 255) orange;
+  }
+  
+  /* для Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+  }
+  *::-webkit-scrollbar-track {
+    background: orange;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 3px solid orange;
+  }

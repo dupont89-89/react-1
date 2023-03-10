@@ -1,0 +1,12 @@
+.block__master {
+    display: flex;
+}
+
+.master__name__description {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+        "name"
+        "description"
+    ;
+}

@@ -1,0 +1,24 @@
+.info__master__description__avatar {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+        "avatar master-description"
+    ;
+    align-items: center;
+}
+.block_profil {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+        "sidebar posts"
+    ;
+}
+.block__master__left {
+    grid-area: sidebar;
+}
+.posts__wall {
+    grid-area: posts;
+    padding: 0px 50px;
+}

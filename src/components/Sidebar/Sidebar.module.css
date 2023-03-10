@@ -1,0 +1,27 @@
+.menu {
+    grid-area: menu;
+}
+
+.menu ul {
+    list-style-type: none;
+}
+
+.menu ul li a {
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ffeb3b;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+a.active {
+    padding-left: 10px;
+    transition: 0.5s;
+}

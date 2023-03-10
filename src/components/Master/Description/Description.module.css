@@ -1,0 +1,16 @@
+.description__master p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.description__master {
+    padding: 0px 50px;
+}
+
+.text-description {
+    grid-area: description;
+}
+
+.master__name__description {
+    grid-area: master-description;
+}

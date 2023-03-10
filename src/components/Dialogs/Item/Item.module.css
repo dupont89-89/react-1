@@ -1,0 +1,11 @@
+.dialogs__item {
+    grid-area: dialogs-item;
+    border-right: 2px solid #000;
+    height: 770px;
+    overflow: auto;
+}
+
+ul {
+    padding: 0;
+
+}

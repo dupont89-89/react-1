@@ -1,7 +1,10 @@
+import React from 'react';
+import s from './Services.module.css';
+
 const Services = () => {
     return (
-        <div className="services">
-            <div className="name__services">
+        <div className={s.services}>
+            <div className={s.name__services}>
                 <p>Цены на услуги</p>
             </div>
                 <table>
