@@ -5,8 +5,9 @@ const Posts_one = (props) => {
     return (
         <div className={s.posts__block__otig}>
             <div className={s.wall__posts}>
-                <img src="https://i.pinimg.com/originals/c3/dd/58/c3dd58e7e25e4c53f05930019b989221.png" alt="" />
+                <img src={props.avatar} alt="" />
                 <div className={s.block__message}>
+                    <h5><Link to="#">{props.nameUser}</Link></h5>
                     <p>{props.message}</p>
                     <div className={s.like}>
                     <span className={s.like__heart}>{props.number_like} ❤</span>

@@ -8,7 +8,8 @@ import Posts from "../Posts/Posts";
 import s from './Profile.module.css';
 import Signup from '../../Master/Signup/Signup';
 
-const Profile = () => {
+const Profile = (props) => {
+
     return (
         <div>
             <div className={s.baner__master}>
@@ -28,7 +29,7 @@ const Profile = () => {
                         <Signup />
                     </div>
                     <div className={s.posts__wall}>
-                        <Posts />
+                        <Posts postData={props.postData} />
                     </div>
                 </div>
             </div>

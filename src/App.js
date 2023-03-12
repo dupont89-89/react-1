@@ -11,7 +11,8 @@ import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import Dialogs from './components/Dialogs/Dialogs_Container/Dialogs';
 
-const App = () => {
+const App = (props) => {
+
   return (
     <BrowserRouter>
       <div className='wrapper'>
@@ -20,8 +21,8 @@ const App = () => {
         <div className='wrapper__content'>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="dialogs/*" element={<Dialogs />} />
+            <Route path="profile" element={<Profile postData={props.postData} />} />
+            <Route path="dialogs/*" element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
             <Route path="music" element={<Music />} />
             <Route path="news" element={<News />} />
             <Route path="settings" element={<Settings />} />
