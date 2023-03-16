@@ -4,7 +4,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Music from './components/Music/Music';
 import News from './components/News/News';
@@ -13,16 +13,22 @@ import Dialogs from './components/Dialogs/Dialogs_Container/Dialogs';
 
 const App = (props) => {
 
+//   let dataFriends = [
+//     { id: 2, avatar__one__friends: 'https://pixelbox.ru/wp-content/uploads/2022/05/russia-avatar-pixelbox.ru-14.jpg', name__one__friends: "Валентин Стрыкало" },
+//     { id: 3, avatar__one__friends: "https://pixelbox.ru/wp-content/uploads/2022/05/russia-avatar-pixelbox.ru-14.jpg", name__one__friends: "Валентин Стрыкало" },
+//     { id: 4, avatar__one__friends: "https://pixelbox.ru/wp-content/uploads/2022/05/russia-avatar-pixelbox.ru-14.jpg", name__one__friends: "Валентин Стрыкало" }
+
+// ]
+
   return (
-    <BrowserRouter>
       <div className='wrapper'>
         <Header />
-        <Sidebar />
+        <Sidebar state={props.state.sidebar} />
         <div className='wrapper__content'>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="profile" element={<Profile postData={props.postData} />} />
-            <Route path="dialogs/*" element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
+            <Route path="profile" element={<Profile state={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} />
+            <Route path="dialogs/*" element={<Dialogs state={props.state.messagesPage} />} />
             <Route path="music" element={<Music />} />
             <Route path="news" element={<News />} />
             <Route path="settings" element={<Settings />} />
@@ -30,7 +36,6 @@ const App = (props) => {
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
   );
 }
 

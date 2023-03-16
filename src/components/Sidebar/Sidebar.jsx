@@ -1,48 +1,29 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import s from './Sidebar.module.css';
-import { NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Friends from './friends/Friends';
+import Nav from './Nav/Nav';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+
+    let myFriends = props.state.myFriends
+        .map(friends => <Friends id={friends.id} avatar__one__friends={friends.avatar__one__friends} name__one__friends={friends.name__one__friends} />);
+
+    let navSidebar = props.state.navSidebar
+        .map(nav => <Nav id={nav.id} name={nav.name} />);
+
     return (
         <aside className={s.sidebar}>
             <nav className={s.menu}>
                 <ul>
-                    <li>
-                        <NavLink className={({ isActive, isPending }) =>
-                            isPending ? s.pending : isActive ? s.active : ""
-                        } to="/">Главная
-                        </NavLink >
-                    </li>
-                    <li>
-                        <NavLink className={({ isActive, isPending }) =>
-                            isPending ? s.pending : isActive ? s.active : ""
-                        } to="profile">Профиль
-                        </NavLink >
-                    </li>
-                    <li>
-                        <NavLink className={({ isActive, isPending }) =>
-                            isPending ? s.pending : isActive ? s.active : ""
-                        } to="dialogs">Диалоги
-                        </NavLink >
-                    </li>
-                    <li>
-                        <NavLink className={({ isActive, isPending }) =>
-                            isPending ? s.pending : isActive ? s.active : ""
-                        } to="music">Моя музыка</NavLink >
-                    </li>
-                    <li><NavLink className={({ isActive, isPending }) =>
-                        isPending ? s.pending : isActive ? s.active : ""
-                    } to="news">Новости
-                    </NavLink >
-                    </li>
-                    <li>
-                        <NavLink className={({ isActive, isPending }) =>
-                            isPending ? s.pending : isActive ? s.active : ""
-                        } to="settings">Настройки
-                        </NavLink >
-                    </li>
+                    {navSidebar}
                 </ul>
             </nav>
+            <hr />
+            <div className={s.list__friends}>
+                {myFriends}
+            </div>
+            <hr />
         </aside>
     );
 }

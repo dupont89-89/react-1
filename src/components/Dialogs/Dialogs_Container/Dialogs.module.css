@@ -3,14 +3,8 @@
     grid-row: 1fr;
     grid-template-columns: 1fr 4fr;
     grid-template-areas:
-        "h1 h1"
         "dialogs-item dialogs-message";
     padding: 30px 30px 30px 10px;
-}
-
-h1 {
-    grid-area: h1;
-    font-size: 25px;
 }
 
 /* W3C standard

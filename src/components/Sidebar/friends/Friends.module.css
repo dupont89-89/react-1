@@ -1,0 +1,11 @@
+.friends__one {
+    font-size: 12px;
+    width: 55px;
+}
+
+.friends__avatar img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
