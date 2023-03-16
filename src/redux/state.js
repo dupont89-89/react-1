@@ -27,7 +27,8 @@ let state = {
             { id: 3, messagesRead: 'Читает', message: 'Треугольники с рамкой. Примеры как сделать различные вариации треугольников с помощью CSS-свойства border. ... В продолжении первой части, примеры как добавить стрелки к блоку с рамкой. Используются оба псевдо-элемента', messageFriends: 'Фуух, я вообще не знал такого' },
             { id: 4, messagesRead: 'Прочитано', message: 'ХАХ ХА АХ тф даешь', messageFriends: 'Я то чего, нормально же ощались. Че ты' },
             { id: 5, messagesRead: 'Пишет', message: 'Откуда берется треугольник? Все контейнеры в HTML изначально', messageFriends: 'Оотуда где рак свисти всегда. Хаааа.' }
-        ]
+        ],
+        newMessage: 'Напиши мне'
     },
     sidebar: {
         myFriends: [
@@ -52,20 +53,40 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
+window.state = state;
+
+export let addPost = () => {
     let newPost = {
         id: 6,
         nameUser: 'Валентин Юдашкин',
         avatar: 'https://i2.wp.com/omoro.ru/wp-content/uploads/2018/05/prikilnie-kartinki-na-avatarky-dlia-devyshek-12.jpg',
         number_like: 0,
-        message: postMessage
+        message: state.profilePage.newPosttext
     }
-    state.profilePage.postData.push(newPost); 
+    state.profilePage.postData.push(newPost);
+    state.profilePage.newPosttext = ('');
+    rerenderEnteriFree (state);
+}
+
+export let sendMessage = () => {
+    let newMessage = {
+        id: 6, 
+        messagesRead: 'Новое', 
+        message: state.messagesPage.newMessage, 
+        messageFriends: 'Я пока компонента, тупая'
+    }
+    state.messagesPage.messagesData.push(newMessage);
+    state.messagesPage.newMessage = ('');
     rerenderEnteriFree (state);
 }
 
 export let updateNewPostText = (newText) => {
-    state.profilePage.newPosttext.push(newText); 
+    state.profilePage.newPosttext = newText; 
+    rerenderEnteriFree (state);
+}
+
+export let sendNewMessage = (newTextMessage) => {
+    state.messagesPage.newMessage = newTextMessage; 
     rerenderEnteriFree (state);
 }
 

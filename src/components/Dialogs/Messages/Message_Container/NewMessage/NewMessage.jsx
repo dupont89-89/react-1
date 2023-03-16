@@ -2,18 +2,23 @@ import React from 'react';
 import s from './NewMessage.module.css';
 
 const newMessage = (props) => {
-        
+    debugger;
     let newMessageDialogs = React.createRef();
+    
+    let newChangeMessage = () => {
+        let text = newMessageDialogs.current.value;
+        props.sendNewMessage(text);
+    }
 
     let actionNewMessage = () => {
-        let text = newMessageDialogs.current.value
-        alert (text);
+        props.sendMessage();
+        props.updateNewPostText('');
     }
-    
-        return (
+
+    return (
         <div className={s.news__message}>
             <div className={s.area__news__message}>
-                <textarea ref={newMessageDialogs}></textarea>
+                <textarea onChange={newChangeMessage} value={props.newMessage} ref={newMessageDialogs} />
             </div>
             <button onClick={actionNewMessage}><span>Отправить сообщение</span></button>
         </div>
@@ -21,3 +26,5 @@ const newMessage = (props) => {
 }
 
 export default newMessage;
+
+
