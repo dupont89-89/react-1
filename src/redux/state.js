@@ -1,4 +1,6 @@
-import { rerenderEnteriFree } from "../render";
+let rerenderEnteriFree = () => {
+    console.log ('Привет');
+}
 
 let state = {
     profilePage: {
@@ -55,7 +57,7 @@ let state = {
 
 window.state = state;
 
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: 6,
         nameUser: 'Валентин Юдашкин',
@@ -68,7 +70,7 @@ export let addPost = () => {
     rerenderEnteriFree (state);
 }
 
-export let sendMessage = () => {
+export const sendMessage = () => {
     let newMessage = {
         id: 6, 
         messagesRead: 'Новое', 
@@ -80,14 +82,19 @@ export let sendMessage = () => {
     rerenderEnteriFree (state);
 }
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
     state.profilePage.newPosttext = newText; 
     rerenderEnteriFree (state);
 }
 
-export let sendNewMessage = (newTextMessage) => {
+export const sendNewMessage = (newTextMessage) => {
     state.messagesPage.newMessage = newTextMessage; 
     rerenderEnteriFree (state);
 }
 
+export const subscribe = (observer) => {
+    rerenderEnteriFree = observer;
+}
+
 export default state;
+
