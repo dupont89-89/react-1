@@ -8,7 +8,7 @@ const Posts = (props) => {
     return (
         <div className={s.wall}>
             <div className={s.posts}>
-                <Posts_new newPosttext={props.newPosttext} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />
+                <Posts_new newPosttext={props.newPosttext} dispatch={props.dispatch} />
                 <Posts_old postData={props.postData} />
             </div>
         </div>

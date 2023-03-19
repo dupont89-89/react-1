@@ -14,7 +14,7 @@ let rerenderEnteriFree = (state) => {
   root.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App state={state} addPost={store.addPost.bind(store)} sendMessage={store.sendMessage.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} sendNewMessage={store.sendNewMessage.bind(store)} />
+        <App state={state} dispatch={store.dispatch.bind(store)} sendMessage={store.sendMessage.bind(store)} sendNewMessage={store.sendNewMessage.bind(store)} />
       </React.StrictMode>
     </BrowserRouter>
 );

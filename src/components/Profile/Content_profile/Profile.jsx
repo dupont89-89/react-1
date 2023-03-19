@@ -29,7 +29,7 @@ const Profile = (props) => {
                         <Signup />
                     </div>
                     <div className={s.posts__wall}>
-                        <Posts newPosttext={props.state.newPosttext} postData={props.state.postData} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />
+                        <Posts dispatch={props.dispatch} newPosttext={props.state.newPosttext} postData={props.state.postData} />
                     </div>
                 </div>
             </div>

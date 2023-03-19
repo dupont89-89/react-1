@@ -38,7 +38,7 @@ let store = {
                 { id: 6, avatar__one__friends: "https://all-t-shirts.ru/goods_images/ru118946II000b592a90cad73026c82e7fc02f0738e35.jpg", name__one__friends: "Наталья Пугачева" },
                 { id: 7, avatar__one__friends: "https://coolsen.ru/wp-content/uploads/2021/06/66-8.jpg", name__one__friends: "Мария Орейро" },
                 { id: 8, avatar__one__friends: "https://sun9-2.userapi.com/s/v1/ig2/TmbiI7cif4WhFVytFEtJpDQ-y6xTZd-nYc5HDYcyY0KWZ7hxtBam0KhvLg0R9rU2ruzktKXfcUxe3vXyTRKDMfF7.jpg?size=400x400&quality=95&crop=270,270,539,539&ava=1", name__one__friends: "Людмила Воронина" }
-    
+
             ],
             navSidebar: [
                 { id: '/', name: 'Главная' },
@@ -47,90 +47,59 @@ let store = {
                 { id: 'music', name: 'Моя музыка' },
                 { id: 'news', name: 'Новости' },
                 { id: 'settings', name: 'Настройки' }
-    
+
             ]
         }
     },
-    getState () {
+
+    _callSubscriber() {
+        console.log('Привет');
+    },
+
+    getState() {
         return this._state;
     },
-    _callSubscriber () {
-        console.log ('Привет');
+
+    subscribe(observer) {
+        this._callSubscriber = observer;
     },
-    addPost () {
-        let newPost = {
-            id: 6,
-            nameUser: 'Валентин Юдашкин',
-            avatar: 'https://i2.wp.com/omoro.ru/wp-content/uploads/2018/05/prikilnie-kartinki-na-avatarky-dlia-devyshek-12.jpg',
-            number_like: 0,
-            message: this._state.profilePage.newPosttext
-        }
-        this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.newPosttext = ('');
-        this._callSubscriber (this._state);
-    },
-    sendMessage () {
+
+    sendMessage() {
         let newMessage = {
-            id: 6, 
-            messagesRead: 'Новое', 
-            message: this._state.messagesPage.newMessage, 
+            id: 6,
+            messagesRead: 'Новое',
+            message: this._state.messagesPage.newMessage,
             messageFriends: 'Я пока компонента, тупая'
         }
         this._state.messagesPage.messagesData.push(newMessage);
         this._state.messagesPage.newMessage = ('');
-        this._callSubscriber (this._state);
+        this._callSubscriber(this._state);
     },
-    updateNewPostText (newText) {
-        this._state.profilePage.newPosttext = newText; 
-        this._callSubscriber (this._state);
+
+    sendNewMessage(newTextMessage) {
+        this._state.messagesPage.newMessage = newTextMessage;
+        this._callSubscriber(this._state);
     },
-    sendNewMessage (newTextMessage) {
-        this._state.messagesPage.newMessage = newTextMessage; 
-        this._callSubscriber (this._state);
-    },
-    subscribe (observer) {
-        this._callSubscriber = observer;
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 6,
+                nameUser: 'Валентин Юдашкин',
+                avatar: 'https://i2.wp.com/omoro.ru/wp-content/uploads/2018/05/prikilnie-kartinki-na-avatarky-dlia-devyshek-12.jpg',
+                number_like: 0,
+                message: this._state.profilePage.newPosttext
+            }
+            this._state.profilePage.postData.push(newPost);
+            this._state.profilePage.newPosttext = ('');
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPosttext = action.newText;
+            this._callSubscriber(this._state);
+        }
+
     }
 }
-
-// export const addPost = () => {
-//     let newPost = {
-//         id: 6,
-//         nameUser: 'Валентин Юдашкин',
-//         avatar: 'https://i2.wp.com/omoro.ru/wp-content/uploads/2018/05/prikilnie-kartinki-na-avatarky-dlia-devyshek-12.jpg',
-//         number_like: 0,
-//         message: state.profilePage.newPosttext
-//     }
-//     state.profilePage.postData.push(newPost);
-//     state.profilePage.newPosttext = ('');
-//     rerenderEnteriFree (state);
-// }
-
-// export const sendMessage = () => {
-//     let newMessage = {
-//         id: 6, 
-//         messagesRead: 'Новое', 
-//         message: state.messagesPage.newMessage, 
-//         messageFriends: 'Я пока компонента, тупая'
-//     }
-//     state.messagesPage.messagesData.push(newMessage);
-//     state.messagesPage.newMessage = ('');
-//     rerenderEnteriFree (state);
-// }
-
-// export const updateNewPostText = (newText) => {
-//     state.profilePage.newPosttext = newText; 
-//     rerenderEnteriFree (state);
-// }
-
-// export const sendNewMessage = (newTextMessage) => {
-//     state.messagesPage.newMessage = newTextMessage; 
-//     rerenderEnteriFree (state);
-// }
-
-// export const subscribe = (observer) => {
-//     rerenderEnteriFree = observer;
-// }
 
 export default store;
 
