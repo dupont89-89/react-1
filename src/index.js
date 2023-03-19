@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let rerenderEnteriFree = () => {
+let rerenderEnteriFree = (state) => {
   root.render(
     <BrowserRouter>
       <React.StrictMode>
