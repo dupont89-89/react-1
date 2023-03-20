@@ -11,7 +11,7 @@ const Messages = (props) => {
     return (
         <div className={s.dialogs__message}>
             <h1>Мои диалоги</h1>
-            <NewMessage sendMessage={props.sendMessage} sendNewMessage={props.sendNewMessage} newMessage={props.newMessage} />
+            <NewMessage dispatch={props.dispatch} newMessage={props.newMessage} />
             {messagesUser}
         </div>
     );

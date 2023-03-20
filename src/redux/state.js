@@ -1,5 +1,7 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ACTION_NEW_MESSAGE = 'ACTION-NEW-MESSAGE';
+const UPDATE_NEW_NESSAGE_BODY = 'UPDATE-NEW-NESSAGE-BODY';
 
 let store = {
     _state: {
@@ -155,22 +157,22 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    sendMessage() {
-        let newMessage = {
-            id: 6,
-            messagesRead: 'Новое',
-            message: this._state.messagesPage.newMessage,
-            messageFriends: 'Я пока компонента, тупая'
-        }
-        this._state.messagesPage.messagesData.push(newMessage);
-        this._state.messagesPage.newMessage = ('');
-        this._callSubscriber(this._state);
-    },
+    // sendMessage() {
+    //     let newMessage = {
+    //         id: 6,
+    //         messagesRead: 'Новое',
+    //         message: this._state.messagesPage.newMessage,
+    //         messageFriends: 'Я пока компонента, тупая'
+    //     }
+    //     this._state.messagesPage.messagesData.push(newMessage);
+    //     this._state.messagesPage.newMessage = ('');
+    //     this._callSubscriber(this._state);
+    // },
 
-    sendNewMessage(newTextMessage) {
-        this._state.messagesPage.newMessage = newTextMessage;
-        this._callSubscriber(this._state);
-    },
+    // sendNewMessage(newTextMessage) {
+    //     this._state.messagesPage.newMessage = newTextMessage;
+    //     this._callSubscriber(this._state);
+    // },
 
     dispatch(action) {
         if (action.type === ADD_POST) {
@@ -184,13 +186,36 @@ let store = {
             this._state.profilePage.postData.push(newPost);
             this._state.profilePage.newPosttext = ('');
             this._callSubscriber(this._state);
+
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPosttext = action.newText;
             this._callSubscriber(this._state);
+
+        } else if (action.type === ACTION_NEW_MESSAGE) {
+            let newMessage = {
+                id: 6,
+                messagesRead: 'Новое',
+                message: this._state.messagesPage.newMessage,
+                messageFriends: 'Я пока компонента, тупая'
+            }
+            this._state.messagesPage.messagesData.push(newMessage);
+            this._state.messagesPage.newMessage = ('');
+            this._callSubscriber(this._state);
+
+        } else if (action.type === UPDATE_NEW_NESSAGE_BODY) {
+            this._state.messagesPage.newMessage = action.newText;
+            this._callSubscriber(this._state);
         }
+
 
     }
 }
+export const sendMessage = () => ({ type: ACTION_NEW_MESSAGE })
+
+export const sendNewMessage = (newTextMessage) => ({
+    type: UPDATE_NEW_NESSAGE_BODY,
+    newText: newTextMessage
+})
 
 export const addPostActionCreator = () => ({ type: ADD_POST })
 

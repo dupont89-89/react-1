@@ -1,18 +1,20 @@
 import React from 'react';
 import s from './NewMessage.module.css';
+import { sendNewMessage } from '../../../../../redux/state';
+import { sendMessage } from '../../../../../redux/state';
 
 const newMessage = (props) => {
 
     let newMessageDialogs = React.createRef();
-    
-    let newChangeMessage = () => {
-        let text = newMessageDialogs.current.value;
-        props.sendNewMessage(text);
-    }
 
     let actionNewMessage = () => {
-        props.sendMessage();
+        props.dispatch(sendMessage());
         props.updateNewPostText('');
+    }
+
+    let newChangeMessage = () => {
+        let text = newMessageDialogs.current.value;
+        props.dispatch(sendNewMessage(text));
     }
 
     return (
