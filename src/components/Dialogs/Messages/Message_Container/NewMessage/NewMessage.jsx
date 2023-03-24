@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './NewMessage.module.css';
-import { sendNewMessage } from '../../../../../redux/state';
-import { sendMessage } from '../../../../../redux/state';
+import { sendNewMessage } from '../../../../../redux/message-reducer';
+import { sendMessage } from '../../../../../redux/message-reducer';
 
 const newMessage = (props) => {
 

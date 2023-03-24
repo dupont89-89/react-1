@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ACTION_NEW_MESSAGE = 'ACTION-NEW-MESSAGE';
-const UPDATE_NEW_NESSAGE_BODY = 'UPDATE-NEW-NESSAGE-BODY';
+import messageReducer from "./message-reducer";
+import profileReducer from "./profile-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 let store = {
     _state: {
@@ -43,7 +42,7 @@ let store = {
                     message: 'CSS-свойство box-shadow добавляет тень к элементу. Через запятую можно задать несколько теней. Тень описывается смещениями по оси X и Y относительно'
                 },
             ],
-            newPosttext: 'Давай до свидания'
+            newPosttext: ''
         },
         messagesPage: {
             dialogsData: [
@@ -120,7 +119,7 @@ let store = {
                     messageFriends: 'Оотуда где рак свисти всегда. Хаааа.'
                 }
             ],
-            newMessage: 'Напиши мне'
+            newMessage: ''
         },
         sidebar: {
             myFriends: [
@@ -157,72 +156,15 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    // sendMessage() {
-    //     let newMessage = {
-    //         id: 6,
-    //         messagesRead: 'Новое',
-    //         message: this._state.messagesPage.newMessage,
-    //         messageFriends: 'Я пока компонента, тупая'
-    //     }
-    //     this._state.messagesPage.messagesData.push(newMessage);
-    //     this._state.messagesPage.newMessage = ('');
-    //     this._callSubscriber(this._state);
-    // },
-
-    // sendNewMessage(newTextMessage) {
-    //     this._state.messagesPage.newMessage = newTextMessage;
-    //     this._callSubscriber(this._state);
-    // },
-
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 6,
-                nameUser: 'Валентин Юдашкин',
-                avatar: 'https://i2.wp.com/omoro.ru/wp-content/uploads/2018/05/prikilnie-kartinki-na-avatarky-dlia-devyshek-12.jpg',
-                number_like: 0,
-                message: this._state.profilePage.newPosttext
-            }
-            this._state.profilePage.postData.push(newPost);
-            this._state.profilePage.newPosttext = ('');
-            this._callSubscriber(this._state);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagesPage = messageReducer(this._state.messagesPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPosttext = action.newText;
-            this._callSubscriber(this._state);
-
-        } else if (action.type === ACTION_NEW_MESSAGE) {
-            let newMessage = {
-                id: 6,
-                messagesRead: 'Новое',
-                message: this._state.messagesPage.newMessage,
-                messageFriends: 'Я пока компонента, тупая'
-            }
-            this._state.messagesPage.messagesData.push(newMessage);
-            this._state.messagesPage.newMessage = ('');
-            this._callSubscriber(this._state);
-
-        } else if (action.type === UPDATE_NEW_NESSAGE_BODY) {
-            this._state.messagesPage.newMessage = action.newText;
-            this._callSubscriber(this._state);
-        }
-
-
+        this._callSubscriber(this._state);
     }
 }
-export const sendMessage = () => ({ type: ACTION_NEW_MESSAGE })
 
-export const sendNewMessage = (newTextMessage) => ({
-    type: UPDATE_NEW_NESSAGE_BODY,
-    newText: newTextMessage
-})
-
-export const addPostActionCreator = () => ({ type: ADD_POST })
-
-export const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text
-})
 
 export default store;
 
