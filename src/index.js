@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/state';
+import store from './redux/redux-store';
 import './index.css';
 import App from './App';
-// import { addPost, sendMessage, sendNewMessage, updateNewPostText } from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
 
 
@@ -19,6 +18,12 @@ let rerenderEnteriFree = (state) => {
     </BrowserRouter>
 );
 }
+
 rerenderEnteriFree (store.getState ());
-store.subscribe (rerenderEnteriFree);
+
+store.subscribe ( () => {
+  let state = store.getState();
+  rerenderEnteriFree(state);
+});
+
 reportWebVitals();

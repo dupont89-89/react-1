@@ -13,13 +13,6 @@ import Dialogs from './components/Dialogs/Dialogs_Container/Dialogs';
 
 const App = (props) => {
 
-//   let dataFriends = [
-//     { id: 2, avatar__one__friends: 'https://pixelbox.ru/wp-content/uploads/2022/05/russia-avatar-pixelbox.ru-14.jpg', name__one__friends: "Валентин Стрыкало" },
-//     { id: 3, avatar__one__friends: "https://pixelbox.ru/wp-content/uploads/2022/05/russia-avatar-pixelbox.ru-14.jpg", name__one__friends: "Валентин Стрыкало" },
-//     { id: 4, avatar__one__friends: "https://pixelbox.ru/wp-content/uploads/2022/05/russia-avatar-pixelbox.ru-14.jpg", name__one__friends: "Валентин Стрыкало" }
-
-// ]
-
   return (
       <div className='wrapper'>
         <Header />
