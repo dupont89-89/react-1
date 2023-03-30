@@ -3,7 +3,7 @@ import s from './Posts.module.css';
 import { addPostActionCreator } from '../../../redux/profile-reducer';
 import { updateNewPostTextActionCreator } from '../../../redux/profile-reducer';
 
-const Posts_new = (props) => {
+const PostsNew = (props) => {
 
     let newPostsElement = React.createRef();
 
@@ -26,4 +26,4 @@ const Posts_new = (props) => {
     );
 }
 
-export default Posts_new;
+export default PostsNew;

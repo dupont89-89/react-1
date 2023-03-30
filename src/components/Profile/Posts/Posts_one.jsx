@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Posts.module.css';
 import { Link } from 'react-router-dom';
-const Posts_one = (props) => {
+const PostsOne = (props) => {
     return (
         <div className={s.posts__block__otig}>
             <div className={s.wall__posts}>
@@ -18,4 +18,4 @@ const Posts_one = (props) => {
         </div>
     );
 }
-export default Posts_one;
+export default PostsOne;

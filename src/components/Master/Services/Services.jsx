@@ -7,7 +7,14 @@ const Services = () => {
             <div className={s.name__services}>
                 <p>Цены на услуги</p>
             </div>
-                <table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Услуга</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td>Брови</td>
                         <td>500 р</td>
@@ -40,7 +47,8 @@ const Services = () => {
                         <td>Мужская стрижка</td>
                         <td> 870 р</td>
                     </tr>
-                </table>
+                </tbody>
+            </table>
         </div>
     );
 }

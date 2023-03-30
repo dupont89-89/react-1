@@ -3,7 +3,7 @@ import Name from "../Name/Name";
 import Description from "../Description/Description";
 import s from './Info_master.module.css';
 
-const Info_master = () => {
+const InfoMaster = () => {
     return (
         <div className={s.master__name__description}>
             <Name />
@@ -12,4 +12,4 @@ const Info_master = () => {
     );
 }
 
-export default Info_master;
+export default InfoMaster;

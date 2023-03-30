@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from "../../Master/Avatar/Avatar";
 import Baner from "../../Baner/Baner";
-import Info_master from "../../Master/Info_master/Info_master";
+import InfoMaster from "../../Master/Info_master/Info_master";
 import Price from "../../Master/Price/Price";
 import Services from "../../Master/Services/Services";
 import Posts from "../Posts/Posts";
@@ -19,7 +19,7 @@ const Profile = (props) => {
                 <div className={s.info__master}>
                     <div className={s.info__master__description__avatar}>
                         <Avatar />
-                        <Info_master />
+                        <InfoMaster />
                     </div>
                 </div>
                 <div className={s.block_profil}>

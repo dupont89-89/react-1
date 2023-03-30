@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './Posts.module.css';
-import Posts_one from './Posts_one';
+import PostsOne from './Posts_one';
 
-const Posts_old = (props) => {
+const PostsOld = (props) => {
 
     let postsUser = props.postData
-    .map( postsUserOld => <Posts_one id={postsUserOld.id} avatar={postsUserOld.avatar} nameUser={postsUserOld.nameUser} message={postsUserOld.message} number_like={postsUserOld.number_like} />);
+    .map( postsUserOld => <PostsOne id={postsUserOld.id} avatar={postsUserOld.avatar} nameUser={postsUserOld.nameUser} message={postsUserOld.message} number_like={postsUserOld.number_like} />);
 
     return (
         <div className={s.old__wall__posts}>
@@ -14,4 +14,4 @@ const Posts_old = (props) => {
     );
 }
 
-export default Posts_old;
+export default PostsOld;
