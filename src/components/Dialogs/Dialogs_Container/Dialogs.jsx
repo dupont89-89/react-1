@@ -4,11 +4,13 @@ import Item from '../Item/Item';
 import Messages from '../Messages/Message_Container/Messages';
 
 const Dialogs = (props) => {
+ 
+    let state = props.store.getState().messagesPage
 
     return (
         <div className={s.dialogs__container}>
-            <Item dialogsData={props.state.dialogsData}  />
-            <Messages dispatch={props.dispatch}  newMessage={props.state.newMessage} messagesData={props.state.messagesData} />
+            <Item dialogsData={state.dialogsData}  />
+            <Messages dispatch={props.store.dispatch}  newMessage={state.newMessage} messagesData={state.messagesData} />
         </div>
     );
 }

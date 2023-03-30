@@ -9,14 +9,13 @@ const Posts_new = (props) => {
 
     let addPosts = () => {
         props.dispatch( addPostActionCreator () )
-        props.updateNewPostText('');
     }
 
     let onPostChange = () => {
         let text = newPostsElement.current.value;
         props.dispatch( updateNewPostTextActionCreator (text) )
     }
-
+    debugger;
     return (
         <div className={s.new__posts}>
             <textarea onChange={onPostChange} value={props.newPosttext} ref={newPostsElement} className={s.text__new__posts} />
