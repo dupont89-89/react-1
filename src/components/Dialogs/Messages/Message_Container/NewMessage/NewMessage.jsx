@@ -1,20 +1,18 @@
 import React from 'react';
 import s from './NewMessage.module.css';
-import { sendNewMessage } from '../../../../../redux/message-reducer';
-import { sendMessage } from '../../../../../redux/message-reducer';
 
-const newMessage = (props) => {
+const NewMessage = (props) => {
 
     let newMessageDialogs = React.createRef();
 
     let actionNewMessage = () => {
-        props.dispatch(sendMessage());
-        props.updateNewPostText('');
+        props.actionNewMessage();
     }
 
     let newChangeMessage = () => {
         let text = newMessageDialogs.current.value;
-        props.dispatch(sendNewMessage(text));
+        props.newChangeMessage(text)
+        // props.dispatch(sendNewMessage(text));
     }
 
     return (
@@ -27,6 +25,6 @@ const newMessage = (props) => {
     );
 }
 
-export default newMessage;
+export default NewMessage;
 
 

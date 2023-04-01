@@ -3,9 +3,9 @@ const UPDATE_NEW_NESSAGE_BODY = 'UPDATE-NEW-NESSAGE-BODY';
 
 export const sendMessage = () => ({ type: ACTION_NEW_MESSAGE })
 
-export const sendNewMessage = (newTextMessage) => ({
+export const sendNewMessage = (text) => ({
     type: UPDATE_NEW_NESSAGE_BODY,
-    newText: newTextMessage
+    newText: text
 })
 
 let initialState = {

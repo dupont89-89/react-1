@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Messages.module.css';
 import OneMessage from '../OneMessage/OneMessage';
-import NewMessage from './NewMessage/NewMessage';
+import NewMessageContainer from './NewMessage/NewMessageContainer';
 
 const Messages = (props) => {
 
@@ -11,7 +11,7 @@ const Messages = (props) => {
     return (
         <div className={s.dialogs__message}>
             <h1>Мои диалоги</h1>
-            <NewMessage dispatch={props.dispatch} newMessage={props.newMessage} />
+            <NewMessageContainer dispatch={props.dispatch} newMessage={props.newMessage} />
             {messagesUser}
         </div>
     );
