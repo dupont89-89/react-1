@@ -5,23 +5,26 @@ import store from './redux/redux-store';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import StoreContext from './redux/store-context';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let rerenderEnteriFree = (state) => {
+let rerenderEnteriFree = () => {
   root.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App store={store} />
+        <StoreContext.Provider value={store}>
+          <App />
+        </StoreContext.Provider>
       </React.StrictMode>
     </BrowserRouter>
-);
+  );
 }
 
-rerenderEnteriFree (store.getState ());
+rerenderEnteriFree(store.getState());
 
-store.subscribe ( () => {
+store.subscribe(() => {
   let state = store.getState();
   rerenderEnteriFree(state);
 });
