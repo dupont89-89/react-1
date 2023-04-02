@@ -6,10 +6,12 @@ import Nav from './Nav/Nav';
 
 const Sidebar = (props) => {
 
-    let myFriends = props.state.myFriends
+    let state = props.store.getState().sidebar
+
+    let myFriends = state.myFriends
         .map(friends => <Friends id={friends.id} avatar__one__friends={friends.avatar__one__friends} name__one__friends={friends.name__one__friends} />);
 
-    let navSidebar = props.state.navSidebar
+    let navSidebar = state.navSidebar
         .map(nav => <Nav id={nav.id} name={nav.name} />);
 
     return (

@@ -17,7 +17,7 @@ const PostsNew = (props) => {
 
     return (
         <div className={s.new__posts}>
-            <textarea onChange={onPostChange} value={props.newPosttext} ref={newPostsElement} className={s.text__new__posts} />
+            <textarea placeholder='Напиши уже новый пост' onChange={onPostChange} value={props.newPosttext} ref={newPostsElement} className={s.text__new__posts} />
             <button onClick={addPosts} className={s.btn__send__posts}>
                 <span>Новая запись</span>
             </button>

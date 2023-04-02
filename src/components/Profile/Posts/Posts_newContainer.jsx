@@ -4,19 +4,21 @@ import { updateNewPostTextActionCreator } from '../../../redux/profile-reducer';
 import PostsNew from './Posts_new';
 
 const PostsNewContainer = (props) => {
-    
+
+    let state = props.store.getState().profilePage
+
     let addPosts = () => {
-        props.dispatch( addPostActionCreator () );
+        props.store.dispatch( addPostActionCreator () );
         // updateNewPostTextActionCreator ('');
     }
 
     let onPostChange = (text) => {
         let action = updateNewPostTextActionCreator (text);
-        props.dispatch(action);
+        props.store.dispatch(action);
     }
 
     return (
-        <PostsNew newPosttext={props.newPosttext} addPosts={addPosts} updateNewPostText={onPostChange} />
+        <PostsNew newPosttext={state.newPosttext} addPosts={addPosts} updateNewPostText={onPostChange} />
     );
 }
 
