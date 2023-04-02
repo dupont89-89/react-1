@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import s from './Sidebar.module.css';
-import { Routes, Route } from 'react-router-dom';
 import Friends from './friends/Friends';
 import Nav from './Nav/Nav';
 

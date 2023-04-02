@@ -5,7 +5,7 @@ import store from './redux/redux-store';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import StoreContext from './redux/store-context';
+import { Provider } from './redux/store-context';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,19 +14,18 @@ let rerenderEnteriFree = () => {
   root.render(
     <BrowserRouter>
       <React.StrictMode>
-        <StoreContext.Provider value={store}>
+        <Provider store={store}>
           <App />
-        </StoreContext.Provider>
+        </Provider>
       </React.StrictMode>
     </BrowserRouter>
   );
 }
 
-rerenderEnteriFree(store.getState());
+rerenderEnteriFree();
 
 store.subscribe(() => {
-  let state = store.getState();
-  rerenderEnteriFree(state);
+  rerenderEnteriFree();
 });
 
 reportWebVitals();
