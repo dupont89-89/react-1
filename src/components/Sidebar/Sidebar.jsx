@@ -5,7 +5,7 @@ import Nav from './Nav/Nav';
 
 const Sidebar = (props) => {
 
-    let state = props.store.getState().sidebar
+    let state = props.store
 
     let myFriends = state.myFriends
         .map(friends => <Friends id={friends.id} avatar__one__friends={friends.avatar__one__friends} name__one__friends={friends.name__one__friends} />);

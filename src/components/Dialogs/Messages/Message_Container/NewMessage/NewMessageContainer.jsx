@@ -2,20 +2,27 @@ import React from 'react';
 import { sendNewMessage } from '../../../../../redux/message-reducer';
 import { sendMessage } from '../../../../../redux/message-reducer';
 import NewMessage from './NewMessage';
+import StoreContext from '../../../../../redux/store-context';
 
 const NewMessageContainer = (props) => {
 
-    let actionNewMessage = () => {
-        props.dispatch(sendMessage());
-    }
-
-    let newChangeMessage = (text) => {
-        let action = sendNewMessage(text)
-        props.dispatch(action);
-    }
-
     return (
-        <NewMessage newMessage={props.newMessage} actionNewMessage={actionNewMessage} newChangeMessage={newChangeMessage} />
+        <StoreContext.Consumer>
+            {store => {
+                let actionNewMessage = () => {
+                    store.dispatch(sendMessage());
+                }
+
+                let newChangeMessage = (text) => {
+                    let action = sendNewMessage(text)
+                    store.dispatch(action);
+                }
+
+                let newMessage = store.getState().messagesPage.newMessage;
+
+                return <NewMessage newMessage={newMessage} actionNewMessage={actionNewMessage} newChangeMessage={newChangeMessage} />
+            }}
+        </StoreContext.Consumer>
     );
 }
 

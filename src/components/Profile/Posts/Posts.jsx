@@ -1,23 +1,17 @@
 import React from 'react';
 import s from './Posts.module.css';
-import PostsOld from './Posts_old';
 import PostsNewContainer from './Posts_newContainer';
-import StoreContext from '../../../redux/store-context';
+import PostsOldContainer from './Posts_oldContainer';
 
 const Posts = (props) => {
 
     return (
-        <StoreContext.Consumer>
-            {store => (
-                <div className={s.wall}>
-                    <div className={s.posts}>
-                        <PostsNewContainer store={store} />
-                        <PostsOld store={store} />
-
-                    </div>
-                </div>
-            )}
-        </StoreContext.Consumer>
+        <div className={s.wall}>
+            <div className={s.posts}>
+                <PostsNewContainer />
+                <PostsOldContainer />
+            </div>
+        </div>
     );
 }
 

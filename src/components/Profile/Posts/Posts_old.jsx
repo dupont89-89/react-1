@@ -4,9 +4,10 @@ import PostsOne from './Posts_one';
 
 const PostsOld = (props) => {
 
-    let postsUser = props.store.getState().profilePage.postData
+    let postsUser = props.state
+    
     .map( postsUserOld => <PostsOne id={postsUserOld.id} avatar={postsUserOld.avatar} nameUser={postsUserOld.nameUser} message={postsUserOld.message} number_like={postsUserOld.number_like} />);
-    debugger;
+
     return (
         <div className={s.old__wall__posts}>
             {postsUser}

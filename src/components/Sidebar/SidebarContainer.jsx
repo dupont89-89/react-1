@@ -7,7 +7,7 @@ const SidebarContainer = (props) => {
     return (
         <StoreContext.Consumer>
             {store =>
-                <Sidebar store={store} />
+                <Sidebar store={store.getState().sidebar} />
             }
         </StoreContext.Consumer>
     )

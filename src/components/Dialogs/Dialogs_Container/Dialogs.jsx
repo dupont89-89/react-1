@@ -1,16 +1,14 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import Item from '../Item/Item';
-import Messages from '../Messages/Message_Container/Messages';
+import MessagesContainer from '../Messages/Message_Container/MessagesContainer';
+import ItemContainer from '../Item/ItemContainer';
 
 const Dialogs = (props) => {
- 
-    let state = props.store.getState().messagesPage
 
     return (
         <div className={s.dialogs__container}>
-            <Item dialogsData={state.dialogsData}  />
-            <Messages dispatch={props.store.dispatch}  newMessage={state.newMessage} messagesData={state.messagesData} />
+            <ItemContainer />
+            <MessagesContainer />
         </div>
     );
 }
