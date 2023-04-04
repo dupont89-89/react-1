@@ -1,16 +1,13 @@
 import React from 'react';
 import Messages from './Messages';
-import StoreContext from '../../../../redux/store-context';
+import { connect } from 'react-redux';
 
-const MessagesContainer = (props) => {
-
-    return (
-        <StoreContext.Consumer>
-            {store =>
-                <Messages messagesData={store.getState().messagesPage.messagesData} />
-            }
-        </StoreContext.Consumer>
-    );
+let mapStateToProps = (state) => {
+    return {
+        messagesData: state.messagesPage.messagesData,
+    }
 }
+
+const MessagesContainer = connect(mapStateToProps)(Messages);
 
 export default MessagesContainer;
