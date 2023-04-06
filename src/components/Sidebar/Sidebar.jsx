@@ -8,10 +8,10 @@ const Sidebar = (props) => {
     let state = props.store
 
     let myFriends = state.myFriends
-        .map(friends => <Friends id={friends.id} avatar__one__friends={friends.avatar__one__friends} name__one__friends={friends.name__one__friends} />);
+        .map(friends => <Friends id={friends.id} key={friends.id} avatar__one__friends={friends.avatar__one__friends} name__one__friends={friends.name__one__friends} />);
 
     let navSidebar = state.navSidebar
-        .map(nav => <Nav id={nav.id} name={nav.name} />);
+        .map(nav => <Nav id={nav.id} key={nav.id} name={nav.name} />);
 
     return (
         <aside className={s.sidebar}>

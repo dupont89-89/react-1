@@ -174,4 +174,5 @@ a:hover {
 .wrapper__content {
   grid-area: content;
   background-color: rgb(211, 255, 161);
+  padding: 15px;
 }

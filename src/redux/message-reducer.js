@@ -88,19 +88,24 @@ let initialState = {
 
 const messageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ACTION_NEW_MESSAGE:
+        case ACTION_NEW_MESSAGE: {
             let newMessage = {
                 id: 6,
                 messagesRead: 'Новое',
                 message: state.newMessage,
                 messageFriends: 'Я пока компонента, тупая'
             }
-            state.messagesData.push(newMessage);
-            state.newMessage = ('');
-            return state;
-        case UPDATE_NEW_NESSAGE_BODY:
-            state.newMessage = action.newText;
-            return state;
+            let stateCopy = {...state};
+            stateCopy.messagesData = [...state.messagesData];
+            stateCopy.messagesData.push(newMessage);
+            stateCopy.newMessage = '';
+            return stateCopy;
+        }
+        case UPDATE_NEW_NESSAGE_BODY: {
+            let stateCopy = {...state};
+            stateCopy.newMessage = action.newText;
+            return stateCopy;
+        }
         default:
             return state;
     }

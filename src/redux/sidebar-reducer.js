@@ -12,17 +12,16 @@ let initialState = {
     navSidebar: [
         { id: '/', name: 'Главная' },
         { id: 'profile', name: 'Профиль' },
+        { id: 'users', name: 'Пользователи' },
         { id: 'dialogs', name: 'Диалоги' },
         { id: 'music', name: 'Моя музыка' },
         { id: 'news', name: 'Новости' },
-        { id: 'settings', name: 'Настройки' }
+        { id: 'settings', name: 'Настройки' },
 
     ]
 }
 
 const sidebarReducer = (state = initialState, action) => {
-
-
     return state;
 }
 

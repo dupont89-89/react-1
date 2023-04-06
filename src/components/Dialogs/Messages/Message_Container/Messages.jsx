@@ -6,7 +6,7 @@ import NewMessageContainer from './NewMessage/NewMessageContainer';
 const Messages = (props) => {
 
     let messagesUser = props.messagesData
-        .map(messages => <OneMessage id={messages.id} message={messages.message} messageFriends={messages.messageFriends} messagesRead={messages.messagesRead} />);
+        .map(messages => <OneMessage id={messages.id} key={messages.id} message={messages.message} messageFriends={messages.messageFriends} messagesRead={messages.messagesRead} />);
 
     return (
         <div className={s.dialogs__message}>

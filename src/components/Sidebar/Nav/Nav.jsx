@@ -12,42 +12,6 @@ const Nav = (props) => {
                 {props.name}
             </NavLink >
         </li>
-        // <div className={s.nav__sidebar}>
-        //             <li>
-        //                 <NavLink className={({ isActive, isPending }) =>
-        //                     isPending ? s.pending : isActive ? s.active : ""
-        //                 } to="/">Главная
-        //                 </NavLink >
-        //             </li>
-        //             <li>
-        //                 <NavLink className={({ isActive, isPending }) =>
-        //                     isPending ? s.pending : isActive ? s.active : ""
-        //                 } to="profile">Профиль
-        //                 </NavLink >
-        //             </li>
-        //             <li>
-        //                 <NavLink className={({ isActive, isPending }) =>
-        //                     isPending ? s.pending : isActive ? s.active : ""
-        //                 } to="dialogs">Диалоги
-        //                 </NavLink >
-        //             </li>
-        //             <li>
-        //                 <NavLink className={({ isActive, isPending }) =>
-        //                     isPending ? s.pending : isActive ? s.active : ""
-        //                 } to="music">Моя музыка</NavLink >
-        //             </li>
-        //             <li><NavLink className={({ isActive, isPending }) =>
-        //                 isPending ? s.pending : isActive ? s.active : ""
-        //             } to="news">Новости
-        //             </NavLink >
-        //             </li>
-        //             <li>
-        //                 <NavLink className={({ isActive, isPending }) =>
-        //                     isPending ? s.pending : isActive ? s.active : ""
-        //                 } to="settings">Настройки
-        //                 </NavLink >
-        //             </li>
-        // </div>
     );
 }
 

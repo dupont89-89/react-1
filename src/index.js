@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let rerenderEnteriFree = () => {
   root.render(
     <BrowserRouter>
       <React.StrictMode>
@@ -20,12 +19,5 @@ let rerenderEnteriFree = () => {
       </React.StrictMode>
     </BrowserRouter>
   );
-}
-
-rerenderEnteriFree();
-
-store.subscribe(() => {
-  rerenderEnteriFree();
-});
 
 reportWebVitals();
