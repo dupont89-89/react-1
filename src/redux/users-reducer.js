@@ -5,12 +5,12 @@ const ACTION_SET_CURRENT_PAGE = 'ACTION_SET_CURRENT_PAGE';
 const ACTION_SET_TOTAL_USER = 'ACTION_SET_TOTAL_USER';
 const ISFETHING_USER_YES = 'ISFETHING_USER_YES';
 
-export const followActionCreator = (userId) => ({ type: ACTION_FOLLOW, userId })
-export const unFollowActionCreator = (userId) => ({ type: ACTION_UN_FOLLOW, userId })
-export const setUsersActionCreator = (usersData) => ({ type: ACTION_SET_USERS, usersData })
-export const setCurrentPageActionCreator = (currentPage) => ({ type: ACTION_SET_CURRENT_PAGE, currentPage })
-export const setUserTotalActionCreator = (totalUser) => ({ type: ACTION_SET_TOTAL_USER, totalUser })
-export const isFetchingUserYesActionCreator = (e) => ({ type: ISFETHING_USER_YES, e })
+export const follow = (userId) => ({ type: ACTION_FOLLOW, userId })
+export const unfollow = (userId) => ({ type: ACTION_UN_FOLLOW, userId })
+export const setUsers = (usersData) => ({ type: ACTION_SET_USERS, usersData })
+export const setCurrentPage = (currentPage) => ({ type: ACTION_SET_CURRENT_PAGE, currentPage })
+export const setUsersTotal = (totalUser) => ({ type: ACTION_SET_TOTAL_USER, totalUser })
+export const tooggleIsFetching = (e) => ({ type: ISFETHING_USER_YES, e })
 
 
 let initialState = {
@@ -20,7 +20,7 @@ let initialState = {
     isFetching: false,
     usersData: [
 
-    ]
+    ],
 }
 
 const usersReducer = (state = initialState, action) => {

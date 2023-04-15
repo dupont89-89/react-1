@@ -1,12 +1,11 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ACTION_SET_USERS_PROFILE = 'ACTION_SET_USERS_PROFILE';
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
+export const addPosts = () => ({ type: ADD_POST })
+export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const setUsersProfile = (usersDataProfile) => ({ type: ACTION_SET_USERS_PROFILE, usersDataProfile })
 
-export const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text
-})
 
 let initialState = {
     postData: [
@@ -46,7 +45,10 @@ let initialState = {
             message: 'CSS-свойство box-shadow добавляет тень к элементу. Через запятую можно задать несколько теней. Тень описывается смещениями по оси X и Y относительно'
         },
     ],
-    newPosttext: ''
+    newPosttext: '',
+    usersDataProfile: [
+
+    ],
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -69,6 +71,9 @@ const profileReducer = (state = initialState, action) => {
             let stateCopy = {...state};
             stateCopy.newPosttext = action.newText;
             return stateCopy;
+        }
+        case ACTION_SET_USERS_PROFILE: {
+            return { ...state, usersDataProfile: action.usersDataProfile }
         }
         default:
             return state;

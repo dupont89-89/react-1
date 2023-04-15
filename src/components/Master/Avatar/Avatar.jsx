@@ -1,10 +1,16 @@
 import React from 'react';
 import s from './Avatar.module.css';
+import Preloader from '../../common/Preloader/Preloader';
 
-const Avatar = () => {
+const Avatar = (props) => {
+
+if (!props.photos) {
+    return <Preloader />
+}
+
     return (
         <div className={s.avatar}>
-            <img src="https://p0.zoon.ru/2/c/5ef1cc309df3e963181de8ef_5ef1cc44e4e9e.jpg" alt="" />
+            <img src={props.photos.large} alt="" />
         </div>
     );
 }

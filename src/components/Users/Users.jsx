@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './UsersContainer.module.css';
 import usersNoAvatar from '../../assets/images/no-avatar.png'
+import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
 
@@ -15,7 +16,9 @@ const Users = (props) => {
                     props.usersData.map(usersItem =>
                         <div id={usersItem.id} key={usersItem.id} className={s.users__item}>
                             <div className={s.img__user}>
+                                <NavLink to={'/profile/' + usersItem.id}>
                                 <img src={usersItem.photos.small != null ? usersItem.photos.small : usersNoAvatar} alt={usersItem.name} />
+                                </NavLink>
                                 {usersItem.followed ? <button onClick={() => { props.follow(usersItem.id) }}>Добавить в друзья</button>
                                     : <button onClick={() => { props.unfollow(usersItem.id) }}>В друзьях</button>}
                             </div>

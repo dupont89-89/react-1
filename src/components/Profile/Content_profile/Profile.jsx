@@ -9,7 +9,7 @@ import s from './Profile.module.css';
 import Signup from '../../Master/Signup/Signup';
 
 const Profile = (props) => {
-
+    debugger;
     return (
         <div>
             <div className={s.baner__master}>
@@ -18,8 +18,8 @@ const Profile = (props) => {
             <div className={s.blok__profil__content}>
                 <div className={s.info__master}>
                     <div className={s.info__master__description__avatar}>
-                        <Avatar />
-                        <InfoMaster />
+                        <Avatar photos={props.photos} />
+                        <InfoMaster lookingForAJobDescription={props.lookingForAJobDescription} contacts={props.contacts} aboutMe={props.aboutMe} fullName={props.fullName} />
                     </div>
                 </div>
                 <div className={s.block_profil}>

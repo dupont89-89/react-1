@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import axios from 'axios';
-import { followActionCreator, unFollowActionCreator, setUsersActionCreator, setCurrentPageActionCreator, setUserTotalActionCreator, isFetchingUserYesActionCreator } from '../../redux/users-reducer';
+import { follow, unfollow, setUsers, setCurrentPage, setUsersTotal, tooggleIsFetching } from '../../redux/users-reducer';
 
 class UsersContainer extends React.Component {
 
@@ -56,28 +56,28 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followActionCreator(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unFollowActionCreator(userId))
-        },
-        setUsers: (usersData) => {
-            dispatch(setUsersActionCreator(usersData))
-        },
-        setCurrentPage: (page) => {
-            dispatch(setCurrentPageActionCreator(page))
-        },
-        setUsersTotal: (userTotal) => {
-            dispatch(setUserTotalActionCreator(userTotal))
-        }
-        ,
-        tooggleIsFetching: (toogle) => {
-            dispatch(isFetchingUserYesActionCreator(toogle))
-        }
-    }
-}
+export default connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setUsersTotal, tooggleIsFetching})(UsersContainer);
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (userId) => {
+//             dispatch(followActionCreator(userId))
+//         },
+//         unfollow: (userId) => {
+//             dispatch(unFollowActionCreator(userId))
+//         },
+//         setUsers: (usersData) => {
+//             dispatch(setUsersActionCreator(usersData))
+//         },
+//         setCurrentPage: (page) => {
+//             dispatch(setCurrentPageActionCreator(page))
+//         },
+//         setUsersTotal: (userTotal) => {
+//             dispatch(setUserTotalActionCreator(userTotal))
+//         }
+//         ,
+//         tooggleIsFetching: (toogle) => {
+//             dispatch(isFetchingUserYesActionCreator(toogle))
+//         }
+//     }
+// }

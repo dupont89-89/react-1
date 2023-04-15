@@ -1,5 +1,4 @@
 import React from 'react';
-import Profile from './components/Profile/Content_profile/Profile';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import './App.css';
@@ -11,6 +10,7 @@ import Settings from './components/Settings/Settings';
 import SidebarContainer from './components/Sidebar/SidebarContainer';
 import DialogsContainer from './components/Dialogs/Dialogs_Container/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/Content_profile/ProfileContainer';
 
 const App = (props) => {
 
@@ -21,7 +21,7 @@ const App = (props) => {
         <div className='wrapper__content'>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile/*" element={<ProfileContainer />} />
             <Route path="dialogs/*" element={<DialogsContainer />} />
             <Route path="music" element={<Music />} />
             <Route path="news" element={<News />} />

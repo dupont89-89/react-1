@@ -9,20 +9,21 @@ let mapStateToProps = (state) => {
         newMessage: state.messagesPage.newMessage
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        actionNewMessage: () => {
-            dispatch(sendMessage());
-        },
-        newChangeMessage: (text) => {
-            let action = sendNewMessage(text)
-            dispatch(action);
-        }
-    }
-}
 
-const NewMessageContainer = connect(mapStateToProps, mapDispatchToProps) (NewMessage);
+const NewMessageContainer = connect(mapStateToProps, {sendNewMessage, sendMessage}) (NewMessage);
 
 export default NewMessageContainer;
+
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         actionNewMessage: () => {
+//             dispatch(sendMessage());
+//         },
+//         newChangeMessage: (text) => {
+//             let action = sendNewMessage(text)
+//             dispatch(action);
+//         }
+//     }
+// }
 
 

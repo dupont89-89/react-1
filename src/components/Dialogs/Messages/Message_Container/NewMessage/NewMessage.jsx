@@ -6,12 +6,12 @@ const NewMessage = (props) => {
     let newMessageDialogs = React.createRef();
 
     let actionNewMessage = () => {
-        props.actionNewMessage();
+        props.sendMessage();
     }
 
     let newChangeMessage = () => {
         let text = newMessageDialogs.current.value;
-        props.newChangeMessage(text)
+        props.sendNewMessage(text)
     }
 
     return (
