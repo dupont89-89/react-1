@@ -3,8 +3,6 @@ import s from './UsersContainer.module.css';
 
 const UsersItem = (props) => {
 
-    
-
     const userSubscribreFollow = () => {
         let userID = props.id
         props.follow(userID);

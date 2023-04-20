@@ -9,7 +9,7 @@ import s from './Profile.module.css';
 import Signup from '../../Master/Signup/Signup';
 
 const Profile = (props) => {
-    debugger;
+    
     return (
         <div>
             <div className={s.baner__master}>

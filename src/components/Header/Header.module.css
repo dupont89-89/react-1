@@ -1,8 +1,24 @@
 .header {
     grid-area: header;
     background-color: #f37021;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 8fr 1fr;
 }
 
 .logo {
     width: 100px;
+}
+
+.block__login {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.block__login a {
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
 }
