@@ -1,9 +1,21 @@
+import { authUser } from "../api/api";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 export const setAuthUserData = (id, login, email) => ({
     type: SET_USER_DATA,
     data: { id, login, email }
 })
+
+export const authUsersThunkCreator = () => {
+    return (dispatch) => {
+        authUser().then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthUserData(response.data.data.id, response.data.data.login, response.data.data.email));
+            }
+        });
+    }
+}
 
 let initialState = {
     data: [{

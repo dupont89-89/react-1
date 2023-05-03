@@ -2,29 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
-import { follow, unfollow, getUsersThunkCreator, followUsersThunkCreator, unfollowUsersThunkCreator } from '../../redux/users-reducer';
+import { getUsersThunkCreator, followUsersThunkCreator, unfollowUsersThunkCreator } from '../../redux/users-reducer';
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
-        // this.props.tooggleIsFetching(true)
-        // getUsers(this.props.currentPage, this.props.pageSize).then(response => {
-        //     this.props.tooggleIsFetching(false);
-        //     this.props.setUsers(response.data.items);
-        //     this.props.setUsersTotal(response.data.totalCount);
-        // });
     }
 
     onPageChange = (p) => {
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize, p);
-        
-        // this.props.tooggleIsFetching(true);
-        // this.props.setCurrentPage(p);
-        // getUsers(p, this.props.pageSize).then(response => {
-        //     this.props.tooggleIsFetching(false);
-        //     this.props.setUsers(response.data.items);
-        // });
 
     }
 
@@ -41,7 +28,15 @@ class UsersContainer extends React.Component {
         return (
             <div>
                 {this.props.isFetching ? <Preloader /> : null}
-                <Users unfollowUsersThunkCreator={this.props.unfollowUsersThunkCreator} followUsersThunkCreator={this.props.followUsersThunkCreator} tooggleInProgress={this.props.tooggleInProgress} followingInProgress={this.props.followingInProgress} currentPage={this.props.currentPage} follow={this.props.follow} unfollow={this.props.unfollow} onPageChange={this.onPageChange} usersData={this.props.usersData} pages={pages} />
+                <Users 
+                unfollowUsersThunkCreator={this.props.unfollowUsersThunkCreator} 
+                followUsersThunkCreator={this.props.followUsersThunkCreator} 
+                followingInProgress={this.props.followingInProgress} 
+                currentPage={this.props.currentPage} 
+                onPageChange={this.onPageChange} 
+                usersData={this.props.usersData} 
+                pages={pages} 
+                />
             </div>
         ) 
     }
@@ -59,4 +54,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { follow, unfollow, getUsersThunkCreator, followUsersThunkCreator, unfollowUsersThunkCreator })(UsersContainer);
+export default connect(mapStateToProps, { getUsersThunkCreator, followUsersThunkCreator, unfollowUsersThunkCreator })(UsersContainer);

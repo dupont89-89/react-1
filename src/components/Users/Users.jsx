@@ -2,8 +2,6 @@ import React from 'react';
 import s from './UsersContainer.module.css';
 import usersNoAvatar from '../../assets/images/no-avatar.png'
 import { NavLink } from 'react-router-dom';
-import { subscribeAddUsers } from '../../api/api';
-import { unsubscribeUsers } from '../../api/api';
 
 const Users = (props) => {
 
@@ -24,25 +22,10 @@ const Users = (props) => {
                             {usersItem.followed
                                 ? <button disabled={props.followingInProgress.some(id => id === usersItem.id)} onClick={() => {
                                     props.followUsersThunkCreator(usersItem.id);
-                                    // props.tooggleInProgress(true, usersItem.id);
-                                    
-                                    // unsubscribeUsers(usersItem.id).then(response => {
-                                    //     if (response.data.resultCode === 0) {
-                                    //         props.follow(usersItem.id)
-                                    //     }
-                                    //     props.tooggleInProgress(false, usersItem.id);
-                                    // });
                                 }}>Удалить из друзей</button>
 
                                 : <button disabled={props.followingInProgress.some(id => id === usersItem.id)} onClick={() => {
                                     props.unfollowUsersThunkCreator(usersItem.id);
-                                    // props.tooggleInProgress(true, usersItem.id);
-                                    // subscribeAddUsers(usersItem.id).then(response => {
-                                    //     if (response.data.resultCode === 0) {
-                                    //         props.unfollow(usersItem.id);
-                                    //     }
-                                    //     props.tooggleInProgress(false, usersItem.id);
-                                    // });
                                 }}>Добавить в друзья</button>}
                         </div>
                         <div className={s.info__user}>

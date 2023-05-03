@@ -1,11 +1,25 @@
+import { dataProfile } from "../api/api";
+
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ACTION_SET_USERS_PROFILE = 'ACTION_SET_USERS_PROFILE';
 
 export const addPosts = () => ({ type: ADD_POST })
-export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export const setUsersProfile = (usersDataProfile) => ({ type: ACTION_SET_USERS_PROFILE, usersDataProfile })
 
+export const dataProfileThunkCreator = (userId) => {
+    return (dispatch) => {
+        if (!userId) {
+            userId = 2;
+          }
+        dataProfile(userId).then(response => {
+           dispatch(setUsersProfile(response.data));
+
+        });
+    }
+}
 
 let initialState = {
     postData: [
@@ -61,14 +75,14 @@ const profileReducer = (state = initialState, action) => {
                 number_like: 0,
                 message: state.newPosttext
             }
-            let stateCopy = {...state};
+            let stateCopy = { ...state };
             stateCopy.postData = [...state.postData];
             stateCopy.postData.push(newPost);
             stateCopy.newPosttext = '';
             return stateCopy;
         }
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state};
+            let stateCopy = { ...state };
             stateCopy.newPosttext = action.newText;
             return stateCopy;
         }
