@@ -13,3 +13,8 @@ export const unsubscribeUsers = (usersID) => {
    return axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${usersID}`, 
    { withCredentials: true, headers: { "API-KEY": "dee5cfcc-ae2d-4b54-8227-023650bdb41f" } })
 }
+
+export const authUser = () => {
+   return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, { withCredentials: true })
+      
+}

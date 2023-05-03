@@ -22,20 +22,27 @@ const Users = (props) => {
                                 <img src={usersItem.photos.small != null ? usersItem.photos.small : usersNoAvatar} alt={usersItem.name} />
                             </NavLink>
                             {usersItem.followed
-                                ? <button onClick={() => {
-                                    unsubscribeUsers(usersItem.id).then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.follow(usersItem.id)
-                                        }
-                                    });
+                                ? <button disabled={props.followingInProgress.some(id => id === usersItem.id)} onClick={() => {
+                                    props.followUsersThunkCreator(usersItem.id);
+                                    // props.tooggleInProgress(true, usersItem.id);
+                                    
+                                    // unsubscribeUsers(usersItem.id).then(response => {
+                                    //     if (response.data.resultCode === 0) {
+                                    //         props.follow(usersItem.id)
+                                    //     }
+                                    //     props.tooggleInProgress(false, usersItem.id);
+                                    // });
                                 }}>Удалить из друзей</button>
-                                
-                                : <button onClick={() => {
-                                    subscribeAddUsers(usersItem.id).then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.unfollow(usersItem.id);
-                                        }
-                                    });
+
+                                : <button disabled={props.followingInProgress.some(id => id === usersItem.id)} onClick={() => {
+                                    props.unfollowUsersThunkCreator(usersItem.id);
+                                    // props.tooggleInProgress(true, usersItem.id);
+                                    // subscribeAddUsers(usersItem.id).then(response => {
+                                    //     if (response.data.resultCode === 0) {
+                                    //         props.unfollow(usersItem.id);
+                                    //     }
+                                    //     props.tooggleInProgress(false, usersItem.id);
+                                    // });
                                 }}>Добавить в друзья</button>}
                         </div>
                         <div className={s.info__user}>
