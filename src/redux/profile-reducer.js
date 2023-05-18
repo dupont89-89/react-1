@@ -1,22 +1,57 @@
-import { dataProfile } from "../api/api";
+import { dataProfile, newStatusProfile, statusProfile } from "../api/api";
 
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ACTION_SET_USERS_PROFILE = 'ACTION_SET_USERS_PROFILE';
+const ACTION_SET_STATUS_PROFILE = 'ACTION_SET_STATUS_PROFILE';
+const ACTION_UPDATE_STATUS_PROFILE = 'ACTION_UPDATE_STATUS_PROFILE';
 
-export const addPosts = () => ({ type: ADD_POST })
+export const addPosts = (newPostsText) => ({ type: ADD_POST, newPostsText })
 export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export const setUsersProfile = (usersDataProfile) => ({ type: ACTION_SET_USERS_PROFILE, usersDataProfile })
+export const setStatusProfile = (userId) => ({ type: ACTION_SET_STATUS_PROFILE, userId })
+export const updateStatusProfile = (status) => ({ type: ACTION_UPDATE_STATUS_PROFILE, status })
+
+// export const addPostsThunkCreator = (newPost) => {
+//     debugger;
+//     return (dispatch) => {
+//             dispatch(addPosts(newPost));
+//     }
+// }
+
+// export const addPostsThunkCreator = (dispatch) => {
+//     return dispatch(addPosts(newPost));
+// }
 
 export const dataProfileThunkCreator = (userId) => {
     return (dispatch) => {
         if (!userId) {
-            userId = 2;
+            userId = 28699;
           }
         dataProfile(userId).then(response => {
            dispatch(setUsersProfile(response.data));
 
+        });
+    }
+}
+
+export const getStatus = (userId) => {
+    return (dispatch) => {
+          statusProfile(userId).then(response => {
+            debugger;
+           dispatch(setStatusProfile(response.data));
+
+        });
+    }
+}
+
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        newStatusProfile(status).then(response => {
+            if (response.data.resultCode === 0) {
+           dispatch(updateStatusProfile(status));
+        }
         });
     }
 }
@@ -61,8 +96,9 @@ let initialState = {
     ],
     newPosttext: '',
     usersDataProfile: [
-
+        
     ],
+    status: "",
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -73,12 +109,11 @@ const profileReducer = (state = initialState, action) => {
                 nameUser: 'Валентин Юдашкин',
                 avatar: 'https://i2.wp.com/omoro.ru/wp-content/uploads/2018/05/prikilnie-kartinki-na-avatarky-dlia-devyshek-12.jpg',
                 number_like: 0,
-                message: state.newPosttext
+                message: action.newPostsText
             }
             let stateCopy = { ...state };
             stateCopy.postData = [...state.postData];
             stateCopy.postData.push(newPost);
-            stateCopy.newPosttext = '';
             return stateCopy;
         }
         case UPDATE_NEW_POST_TEXT: {
@@ -88,6 +123,9 @@ const profileReducer = (state = initialState, action) => {
         }
         case ACTION_SET_USERS_PROFILE: {
             return { ...state, usersDataProfile: action.usersDataProfile }
+        }
+        case ACTION_UPDATE_STATUS_PROFILE: {
+            return { ...state, status: action.status }
         }
         default:
             return state;

@@ -1,12 +1,6 @@
 const ACTION_NEW_MESSAGE = 'ACTION-NEW-MESSAGE';
-const UPDATE_NEW_NESSAGE_BODY = 'UPDATE-NEW-NESSAGE-BODY';
 
-export const sendMessage = () => ({ type: ACTION_NEW_MESSAGE })
-
-export const sendNewMessage = (text) => ({
-    type: UPDATE_NEW_NESSAGE_BODY,
-    newText: text
-})
+export const sendMessage = (message) => ({ type: ACTION_NEW_MESSAGE, message })
 
 let initialState = {
     dialogsData: [
@@ -92,18 +86,13 @@ const messageReducer = (state = initialState, action) => {
             let newMessage = {
                 id: 6,
                 messagesRead: 'Новое',
-                message: state.newMessage,
+                message: action.message,
                 messageFriends: 'Я пока компонента, тупая'
             }
-            let stateCopy = {...state};
+            let stateCopy = { ...state };
             stateCopy.messagesData = [...state.messagesData];
             stateCopy.messagesData.push(newMessage);
             stateCopy.newMessage = '';
-            return stateCopy;
-        }
-        case UPDATE_NEW_NESSAGE_BODY: {
-            let stateCopy = {...state};
-            stateCopy.newMessage = action.newText;
             return stateCopy;
         }
         default:

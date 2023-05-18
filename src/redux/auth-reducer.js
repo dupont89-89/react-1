@@ -1,10 +1,19 @@
-import { authUser } from "../api/api";
+import { authUser, loginUser } from "../api/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_LOGIN_AUTH = 'SET_USER_LOGIN_AUTH';
 
 export const setAuthUserData = (id, login, email) => ({
     type: SET_USER_DATA,
     data: { id, login, email }
+})
+
+export const setAuthUserLogin = (userId) => ({
+    type: SET_USER_LOGIN_AUTH,
+    messages: [],
+    data: {
+      userId: userId
+    }
 })
 
 export const authUsersThunkCreator = () => {
@@ -17,6 +26,17 @@ export const authUsersThunkCreator = () => {
     }
 }
 
+export const loginUserThunkCreator = (formData) => {
+    return (dispatch) => {
+        loginUser(formData).then(response => {
+            debugger;
+            if (response.resultCode === 0) {
+            dispatch (setAuthUserLogin(formData))
+            }
+        })
+    }
+}
+
 let initialState = {
     data: [{
         id: null,
@@ -25,6 +45,7 @@ let initialState = {
         isAuth: false,
     }],
     isAuth: false,
+    login: null,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -35,6 +56,11 @@ const authReducer = (state = initialState, action) => {
                 data: action.data,
                 isAuth: true,
             };
+            case SET_USER_LOGIN_AUTH:
+                return {
+                    ...state,
+                    login: action.userId,
+                };
         default:
             return state;
     }

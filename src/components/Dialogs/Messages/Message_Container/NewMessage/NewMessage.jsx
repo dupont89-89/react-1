@@ -1,25 +1,34 @@
 import React from 'react';
 import s from './NewMessage.module.css';
+import { Field, reduxForm } from 'redux-form'
+
+const NewMessageForm = (props) => {
+
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field name="newmessage"
+                component="textarea"
+                type={"text"}
+                placeholder='вои друзья ждут сообщений'
+                className={s.text__new__posts} />
+            <input placeholder='Отправить сообщение' className={s.btn__send__posts} type="submit" />
+        </form>
+    );
+}
+
+const NewMessageRedaxForm = reduxForm({
+    form: 'newmessage'
+})(NewMessageForm)
 
 const NewMessage = (props) => {
 
-    let newMessageDialogs = React.createRef();
-
-    let actionNewMessage = () => {
-        props.sendMessage();
-    }
-
-    let newChangeMessage = () => {
-        let text = newMessageDialogs.current.value;
-        props.sendNewMessage(text)
+    const onSubmit = (values) => {
+        return props.sendMessage(values.newmessage)
     }
 
     return (
-        <div className={s.news__message}>
-            <div className={s.area__news__message}>
-                <textarea placeholder='Твои друзья ждут сообщений' onChange={newChangeMessage} value={props.newMessage} ref={newMessageDialogs} />
-            </div>
-            <button onClick={actionNewMessage}><span>Отправить сообщение</span></button>
+        <div>
+            <NewMessageRedaxForm onSubmit={onSubmit} />
         </div>
     );
 }

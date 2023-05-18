@@ -19,7 +19,7 @@ const Profile = (props) => {
                 <div className={s.info__master}>
                     <div className={s.info__master__description__avatar}>
                         <Avatar photos={props.photos} />
-                        <InfoMaster lookingForAJobDescription={props.lookingForAJobDescription} contacts={props.contacts} aboutMe={props.aboutMe} fullName={props.fullName} />
+                        <InfoMaster userId={props.userId} updateStatus={props.updateStatus} status={props.status} lookingForAJobDescription={props.lookingForAJobDescription} contacts={props.contacts} aboutMe={props.aboutMe} fullName={props.fullName} />
                     </div>
                 </div>
                 <div className={s.block_profil}>

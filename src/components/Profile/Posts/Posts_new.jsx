@@ -1,28 +1,48 @@
 import React from 'react';
 import s from './Posts.module.css';
+import { connect } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
+import { addPosts} from '../../../redux/profile-reducer';
 
-const PostsNew = (props) => {
-
-    let newPostsElement = React.createRef();
-
-    let addPosts = () => {
-        props.addPosts();
-    }
-
-    let onPostChange = () => {
-        let text = newPostsElement.current.value
-        props.updateNewPostText(text);
-    }
-
+const PostsNewForm = (props) => {
 
     return (
         <div className={s.new__posts}>
-            <textarea placeholder='Напиши уже новый пост' onChange={onPostChange} value={props.newPosttext} ref={newPostsElement} className={s.text__new__posts} />
-            <button onClick={addPosts} className={s.btn__send__posts}>
-                <span>Новая запись</span>
-            </button>
+            <form onSubmit={props.handleSubmit}>
+                <Field name="newposts"
+                    component="textarea"
+                    type={"text"}
+                    placeholder='Напиши уже новый пост'
+                    className={s.text__new__posts} />
+                <input className={s.btn__send__posts} type="submit" />
+            </form>
         </div>
     );
 }
+
+const NewPostsReduxForm = reduxForm({
+    form: 'newposts'
+})(PostsNewForm)
+
+const PostsNew = (props) => {
+
+    const onSubmit = (values) => {
+        return props.addPostsAction(values.newposts)
+    }
+
+    return (
+        <div>
+            <NewPostsReduxForm onSubmit={onSubmit} />
+        </div>
+    );
+}
+
+let mapDispatchToProps = (dispatch) => {
+   return {
+    addPostsAction: (values) => {
+        dispatch(addPosts(values))}
+}}
+
+connect(mapDispatchToProps)(PostsNew);
 
 export default PostsNew;

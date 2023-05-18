@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './UsersContainer.module.css';
 import usersNoAvatar from '../../assets/images/no-avatar.png'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Users = (props) => {
 
@@ -9,7 +9,7 @@ const Users = (props) => {
         <div>
             <div className={s.pagination__block}>
                 {props.pages.map(p => {
-                    return <a href="#" onClick={(e) => { props.onPageChange(p); }} className={props.currentPage === p && s.selected}>{p}</a>
+                    return <Link href="#" onClick={(e) => { props.onPageChange(p); }} className={props.currentPage === p && s.selected}>{p}</Link>
                 })}
             </div>
             {

@@ -22,3 +22,8 @@
     grid-area: posts;
     padding: 0px 50px;
 }
+.status__profile {
+    padding: 5px 50px;
+    grid-area: status;
+    font-size: 20px;
+}

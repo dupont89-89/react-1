@@ -1,9 +1,10 @@
 import React from "react";
 import preloader from '../../../assets/images/b49112a201d5f7bf04fcf051337f725f.gif';
+import s from './preloader.module.css';
 
 const Preloader = (props) => {
     return (
-        <img src={preloader}/>
+        <div class={s.gif__preloader}><img src={preloader}/></div>
     )
 }
 
