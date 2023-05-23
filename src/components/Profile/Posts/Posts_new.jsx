@@ -3,6 +3,8 @@ import s from './Posts.module.css';
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { addPosts} from '../../../redux/profile-reducer';
+import { maxLenghtCreater, requiredField } from '../../../utils/validators/validators';
+import { Textarea } from '../../common/FormControls/FormControls';
 
 const PostsNewForm = (props) => {
 
@@ -10,9 +12,10 @@ const PostsNewForm = (props) => {
         <div className={s.new__posts}>
             <form onSubmit={props.handleSubmit}>
                 <Field name="newposts"
-                    component="textarea"
+                    component={Textarea}
                     type={"text"}
                     placeholder='Напиши уже новый пост'
+                    validate={[requiredField, maxLenghtCreater(10)]}
                     className={s.text__new__posts} />
                 <input className={s.btn__send__posts} type="submit" />
             </form>

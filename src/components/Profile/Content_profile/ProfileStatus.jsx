@@ -2,19 +2,6 @@ import React from 'react';
 import s from './Profile.module.css';
 import {getStatus} from '../../../redux/profile-reducer'
 
-// const ProfileStatus = (props) => {
-
-//     return (
-//         <div className={s.status__profile}>
-//            <p>Привет, это мой статус. Я бы хотел убежать далеко</p>
-//            <span>{props.status}</span>
-//            <input value={props.status} />
-//         </div>
-//     )
-// }
-
-// export default ProfileStatus;
-
 export default class ProfileStatus extends React.Component {
 
     state = {
@@ -46,11 +33,9 @@ export default class ProfileStatus extends React.Component {
             status: this.props.status
         })
        }
-        console.log('componentDidUpdate')
     }
     
     render() {
-        console.log('render')
         return (
             
             <div>
