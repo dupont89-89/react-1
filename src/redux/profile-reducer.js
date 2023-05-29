@@ -1,4 +1,4 @@
-import { dataProfile, newStatusProfile, statusProfile } from "../api/api";
+import { dataProfile, newStatusProfile, getUserStatusProfile } from "../api/api";
 
 
 const ADD_POST = 'ADD-POST';
@@ -10,7 +10,7 @@ const ACTION_UPDATE_STATUS_PROFILE = 'ACTION_UPDATE_STATUS_PROFILE';
 export const addPosts = (newPostsText) => ({ type: ADD_POST, newPostsText })
 export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export const setUsersProfile = (usersDataProfile) => ({ type: ACTION_SET_USERS_PROFILE, usersDataProfile })
-export const setStatusProfile = (userId) => ({ type: ACTION_SET_STATUS_PROFILE, userId })
+export const setStatusProfile = (status) => ({ type: ACTION_SET_STATUS_PROFILE, status })
 export const updateStatusProfile = (status) => ({ type: ACTION_UPDATE_STATUS_PROFILE, status })
 
 // export const addPostsThunkCreator = (newPost) => {
@@ -38,10 +38,8 @@ export const dataProfileThunkCreator = (userId) => {
 
 export const getStatus = (userId) => {
     return (dispatch) => {
-          statusProfile(userId).then(response => {
-            debugger;
+        getUserStatusProfile(userId).then(response => {
            dispatch(setStatusProfile(response.data));
-
         });
     }
 }
@@ -124,7 +122,8 @@ const profileReducer = (state = initialState, action) => {
         case ACTION_SET_USERS_PROFILE: {
             return { ...state, usersDataProfile: action.usersDataProfile }
         }
-        case ACTION_UPDATE_STATUS_PROFILE: {
+        case ACTION_SET_STATUS_PROFILE: {
+            debugger;
             return { ...state, status: action.status }
         }
         default:

@@ -16,15 +16,13 @@ export const setAuthUserLogin = (userId) => ({
     }
 })
 
-export const authUsersThunkCreator = () => {
-    return (dispatch) => {
-        authUser().then(response => {
+export const authUsersThunkCreator = () => (dispatch) => {
+        return authUser().then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(setAuthUserData(response.data.data.id, response.data.data.login, response.data.data.email));
             }
         });
     }
-}
 
 export const loginUserThunkCreator = (formData) => {
     return (dispatch) => {
@@ -36,6 +34,16 @@ export const loginUserThunkCreator = (formData) => {
         })
     }
 }
+
+// export const getStatus = (userId) => {
+//     return (dispatch) => {
+//           statusProfile(userId).then(response => {
+//             debugger;
+//            dispatch(setStatusProfile(response.data));
+
+//         });
+//     }
+// }
 
 let initialState = {
     data: [{

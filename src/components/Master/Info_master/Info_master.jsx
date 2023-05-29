@@ -2,7 +2,7 @@ import React from 'react';
 import Name from "../Name/Name";
 import Description from "../Description/Description";
 import s from './Info_master.module.css';
-import ProfileStatus from '../../Profile/Content_profile/ProfileStatus';
+import { ProfileStatus } from '../../Profile/Content_profile/ProfileStatus';
 
 const InfoMaster = (props) => {
     return (

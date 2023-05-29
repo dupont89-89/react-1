@@ -20,8 +20,8 @@ export const tooggleInProgress = (progress, userId) => ({ type: FOLLOWING_IN_PRO
 export const getUsersThunkCreator = (currentPage, pageSize, p) => {
     return (dispatch) => {
         dispatch(tooggleIsFetching(true));
+        dispatch(setCurrentPage(p));
         getUsers(currentPage, pageSize).then(response => {
-            dispatch(setCurrentPage(p));
             dispatch(tooggleIsFetching(false));
             dispatch(setUsers(response.data.items));
             dispatch(setUsersTotal(response.data.totalCount));

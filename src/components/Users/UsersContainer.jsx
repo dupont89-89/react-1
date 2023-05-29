@@ -6,15 +6,16 @@ import { getUsersThunkCreator, followUsersThunkCreator, unfollowUsersThunkCreato
 
 class UsersContainer extends React.Component {
 
-    componentDidMount() {
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
-    }
-
+    // componentDidMount() {
+    //     onPageChange = (p) => {
+    //         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize, p); 
+    //     };
+    // }
     onPageChange = (p) => {
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize, p);
 
     }
-
+    
     render() {
 
         let pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);

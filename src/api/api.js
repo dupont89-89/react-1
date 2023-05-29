@@ -27,7 +27,7 @@ export const dataProfile = (userId) => {
    return instance.get(`profile/` + userId)
 }
 
-export const statusProfile = (userId) => {
+export const getUserStatusProfile = (userId) => {
    return instance.get(`profile/status/` + userId)
 }
 
