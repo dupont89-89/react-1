@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { dataProfileThunkCreator, updateStatus, getStatus } from '../../../redux/profile-reducer'
+import { dataProfileThunkCreator, updateStatus, getStatus, updateStatusProfile } from '../../../redux/profile-reducer'
 import WithAuthRedirect from '../../../hoc/WithAuthRedirect';
 import { useParams } from 'react-router-dom';
 import { getProfileAboutMe, getProfleContacts, getProfleFullName, getProfleIsAuth, getProfleLookingForAJob, 
@@ -18,10 +18,10 @@ class ProfileContainer extends React.Component {
 
   componentDidMount() {
     let userId = this.props.match.params.userId
-    this.props.dataProfileThunkCreator(userId);
     this.props.getStatus(userId);
-  
+    this.props.dataProfileThunkCreator(userId);
   }
+  
   render() {
     return (
       <div>
@@ -71,4 +71,5 @@ let mapStateToProps = (state) => {
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 // let WithUrlDataContainerComponentRa = WithAuthRedirect(WithUrlDataContainerComponent);
 
-export default connect(mapStateToProps, { dataProfileThunkCreator, updateStatus, getStatus })(WithUrlDataContainerComponent);
+
+export default connect(mapStateToProps, { dataProfileThunkCreator, updateStatus , getStatus })(WithUrlDataContainerComponent);

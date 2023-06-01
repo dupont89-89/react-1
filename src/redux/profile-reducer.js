@@ -11,7 +11,6 @@ export const addPosts = (newPostsText) => ({ type: ADD_POST, newPostsText })
 export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export const setUsersProfile = (usersDataProfile) => ({ type: ACTION_SET_USERS_PROFILE, usersDataProfile })
 export const setStatusProfile = (status) => ({ type: ACTION_SET_STATUS_PROFILE, status })
-export const updateStatusProfile = (status) => ({ type: ACTION_UPDATE_STATUS_PROFILE, status })
 
 // export const addPostsThunkCreator = (newPost) => {
 //     debugger;
@@ -38,7 +37,7 @@ export const dataProfileThunkCreator = (userId) => {
 
 export const getStatus = (userId) => {
     return (dispatch) => {
-        getUserStatusProfile(userId).then(response => {
+        getUserStatusProfile(userId).then(response => {  
            dispatch(setStatusProfile(response.data));
         });
     }
@@ -48,7 +47,7 @@ export const updateStatus = (status) => {
     return (dispatch) => {
         newStatusProfile(status).then(response => {
             if (response.data.resultCode === 0) {
-           dispatch(updateStatusProfile(status));
+           dispatch(setStatusProfile(status));
         }
         });
     }
@@ -94,7 +93,6 @@ let initialState = {
     ],
     newPosttext: '',
     usersDataProfile: [
-        
     ],
     status: "",
 }
@@ -123,7 +121,6 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, usersDataProfile: action.usersDataProfile }
         }
         case ACTION_SET_STATUS_PROFILE: {
-            debugger;
             return { ...state, status: action.status }
         }
         default:

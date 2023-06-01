@@ -61,7 +61,7 @@ class App extends Component {
       <SidebarContainer />
       <div className='wrapper__content'>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/profile/*" element={<ProfileContainer />}>
             <Route path=":userId?" element={<ProfileContainer />} />
           </Route>
