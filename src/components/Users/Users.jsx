@@ -2,16 +2,19 @@ import React from 'react';
 import s from './UsersContainer.module.css';
 import usersNoAvatar from '../../assets/images/no-avatar.png'
 import { Link, NavLink } from 'react-router-dom';
+import Paginator from '../common/Paginator/Paginator';
 
 const Users = (props) => {
 
     return (
         <div>
-            <div className={s.pagination__block}>
+            {/* <div className={s.pagination__block}>
                 {props.pages.map(p => {
                     return <Link href="#" onClick={(e) => { props.onPageChange(p); }} className={props.currentPage === p && s.selected}>{p}</Link>
                 })}
-            </div>
+            </div> */}
+                <Paginator pageCount={props.pageCount} portionSize={15} currentPage={props.currentPage} onPageChange={props.onPageChange} pages={props.pages} />
+            
             {
                 props.usersData.map(usersItem =>
                     <div id={usersItem.id} key={usersItem.id} className={s.users__item}>

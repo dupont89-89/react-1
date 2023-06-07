@@ -1,4 +1,3 @@
-import React from 'react';
 import PostsOld from './Posts_old';
 import { connect } from 'react-redux';
 

@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Messages.module.css';
 import OneMessage from '../OneMessage/OneMessage';
 import NewMessageContainer from './NewMessage/NewMessageContainer';
-import { Navigate, redirect } from 'react-router-dom';
 
 const Messages = (props) => {
 

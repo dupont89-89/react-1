@@ -5,7 +5,6 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ACTION_SET_USERS_PROFILE = 'ACTION_SET_USERS_PROFILE';
 const ACTION_SET_STATUS_PROFILE = 'ACTION_SET_STATUS_PROFILE';
-const ACTION_UPDATE_STATUS_PROFILE = 'ACTION_UPDATE_STATUS_PROFILE';
 
 export const addPosts = (newPostsText) => ({ type: ADD_POST, newPostsText })
 export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })

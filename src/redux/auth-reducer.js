@@ -12,28 +12,43 @@ export const setAuthUserLogin = (userId) => ({
     type: SET_USER_LOGIN_AUTH,
     messages: [],
     data: {
-      userId: userId
+        userId: userId
     }
 })
 
-export const authUsersThunkCreator = () => (dispatch) => {
-        return authUser().then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setAuthUserData(response.data.data.id, response.data.data.login, response.data.data.email));
-            }
-        });
-    }
+// export const authUsersThunkCreator = () => (dispatch) => {
+//         return authUser().then(response => {
+//             if (response.data.resultCode === 0) {
+//                 dispatch(setAuthUserData(response.data.data.id, response.data.data.login, response.data.data.email));
+//             }
+//         });
+//     }
 
-export const loginUserThunkCreator = (formData) => {
-    return (dispatch) => {
-        loginUser(formData).then(response => {
-            debugger;
-            if (response.resultCode === 0) {
-            dispatch (setAuthUserLogin(formData))
-            }
-        })
+export const authUsersThunkCreator = () => async (dispatch) => {
+    const response = await authUser();
+    if (response.data.resultCode === 0) {
+        dispatch(setAuthUserData(response.data.data.id, response.data.data.login, response.data.data.email));
     }
-}
+};
+
+// export const loginUserThunkCreator = (formData) => {
+//     return (dispatch) => {
+//         loginUser(formData).then(response => {
+//             debugger;
+//             if (response.resultCode === 0) {
+//             dispatch (setAuthUserLogin(formData))
+//             }
+//         })
+//     }
+// }
+
+export const loginUserThunkCreator = (formData) => async (dispatch) => {
+    const response = await loginUser(formData);
+    if (response.resultCode === 0) {
+        dispatch(setAuthUserLogin(formData))
+    }
+};
+
 
 // export const getStatus = (userId) => {
 //     return (dispatch) => {
@@ -64,11 +79,11 @@ const authReducer = (state = initialState, action) => {
                 data: action.data,
                 isAuth: true,
             };
-            case SET_USER_LOGIN_AUTH:
-                return {
-                    ...state,
-                    login: action.userId,
-                };
+        case SET_USER_LOGIN_AUTH:
+            return {
+                ...state,
+                login: action.userId,
+            };
         default:
             return state;
     }

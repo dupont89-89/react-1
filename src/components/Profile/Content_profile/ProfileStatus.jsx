@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Profile.module.css';
-import { getStatus } from '../../../redux/profile-reducer';
 
 export class ProfileStatus extends React.Component {
     state = {

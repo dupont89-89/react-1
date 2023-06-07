@@ -55,7 +55,7 @@ export const unfollowUsersThunkCreator = (id) => {
 //thunk
 
 let initialState = {
-    pageSize: 50,
+    pageSize: 5,
     totalUsersCount: 21,
     currentPage: 1,
     isFetching: false,
@@ -104,7 +104,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state, followingInProgress: action.progress
                     ? [...state.followingInProgress, action.userId]
-                    : [state.followingInProgress.filter(id => id != action.userId)]
+                    : [state.followingInProgress.filter(id => id !== action.userId)]
             }
         }
         default:
