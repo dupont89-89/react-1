@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import Footer from './components/Footer/Footer';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { initializedApp } from './redux/app-reducer';
 import Home from './components/Home/Home';
 import Music from './components/Music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import SidebarContainer from './components/Sidebar/SidebarContainer';
 import DialogsContainer from './components/Dialogs/Dialogs_Container/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/Content_profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Auth/Auth'
-import { connect } from 'react-redux';
-import { initializedApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
+// import UsersContainer from './components/Users/UsersContainer';
+const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
 
 
 // const App = (props) => {
@@ -69,7 +70,7 @@ class App extends Component {
           <Route path="music" element={<Music />} />
           <Route path="news" element={<News />} />
           <Route path="settings" element={<Settings />} />
-          <Route path="users" element={<UsersContainer />} />
+          <Route path="users" element={<Suspense fallback={<div><Preloader /></div>}><UsersContainer /></Suspense>} />
           <Route path="login" element={<Login />} />
         </Routes>
       </div>

@@ -1,6 +1,6 @@
-import React from 'react'; 
-import { connect } from 'react-redux'; 
-import Users from './Users'; import Preloader from '../common/Preloader/Preloader'; 
+import React from 'react';
+import { connect } from 'react-redux';
+import Users from './Users'; import Preloader from '../common/Preloader/Preloader';
 import { getUsersThunkCreator, followUsersThunkCreator, unfollowUsersThunkCreator } from '../../redux/users-reducer';
 
 class UsersContainer extends React.Component {
@@ -23,19 +23,19 @@ class UsersContainer extends React.Component {
 
         return (
             <div>
-                {this.props.isFetching ? <Preloader /> : null}
-                <Users
-                    unfollowUsersThunkCreator={this.props.unfollowUsersThunkCreator}
-                    followUsersThunkCreator={this.props.followUsersThunkCreator}
-                    followingInProgress={this.props.followingInProgress}
-                    currentPage={this.props.currentPage}
-                    onPageChange={this.onPageChange}
-                    usersData={this.props.usersData}
-                    pages={pages}
-                    pageCount={pageCount}
-                    totalUsersCount={this.props.totalUsersCount}
-                    pageSize={this.props.pageSize}
-                />
+                    {this.props.isFetching ? <Preloader /> : null}
+                    <Users
+                        unfollowUsersThunkCreator={this.props.unfollowUsersThunkCreator}
+                        followUsersThunkCreator={this.props.followUsersThunkCreator}
+                        followingInProgress={this.props.followingInProgress}
+                        currentPage={this.props.currentPage}
+                        onPageChange={this.onPageChange}
+                        usersData={this.props.usersData}
+                        pages={pages}
+                        pageCount={pageCount}
+                        totalUsersCount={this.props.totalUsersCount}
+                        pageSize={this.props.pageSize}
+                    />
             </div>
         )
     }
@@ -43,11 +43,11 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        usersData: state.usersPage.usersData, 
-        pageSize: state.usersPage.pageSize, 
-        totalUsersCount: state.usersPage.totalUsersCount, 
-        currentPage: state.usersPage.currentPage, 
-        isFetching: state.usersPage.isFetching, 
+        usersData: state.usersPage.usersData,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress
 
     }
